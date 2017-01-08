@@ -1,0 +1,29 @@
+<div class="modal-header">
+    <h3 class="modal-title">上传文件</h3>
+</div>
+<div class="modal-body">
+    <div class="row">
+        <div ng-if="status.isError">
+            <div class="alert alert-error">
+                <p><i class="icon fa times-circle"></i><strong>错误: </strong>{{status.errorMsg}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-xs-8">
+            <div class="thumbnail">
+            预览: {{file.name}}
+            <img ngf-thumbnail="file || '../images/no_data.png'"  width="250px" alt="thumbnails">
+            <video controls ngf-src="file" ng-if="options.type === 'video/*'" width="250px"></video>
+            </div>
+        </div>
+        <div class="col-xs-12" ng-if="status.isUploading">{{status.uploadMsg + status.progress}}%</div>
+    </div>
+    <form>
+         <div class="btn btn-primary" type="button" ngf-select ng-model="file" ngf-pattern="options.type" ngf-accept="options.type">选择要上传的文件</div>
+    </form>
+</div>
+<div class="modal-footer">
+    <button class="btn btn-success" type="submit" ng-click="submit()"><i class="fa fa-upload"></i>上传</button>
+    <button class="btn btn-default" type="button" ng-click="cancel()">取消</button>
+</div>
