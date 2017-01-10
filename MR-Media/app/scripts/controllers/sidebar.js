@@ -3,7 +3,7 @@
 mrmedia.controller('SidebarCtrl', ['$scope', 'SidebarSrv', 'NoticeSrv',
  function($scope, SidebarSrv, NoticeSrv) {
 
-  $scope.userIcon = "http://192.168.1.3:8080/AdminLTE-2.3.7/AdminLTE-2.3.7/dist/img/user2-160x160.jpg";
+  $scope.userIcon = "http://v2.freep.cn/3tb_170108150034cycw512293.jpg";
 
    $scope.adminMenu = [
      {
