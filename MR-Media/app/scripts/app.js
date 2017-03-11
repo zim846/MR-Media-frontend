@@ -104,7 +104,7 @@ mrmedia.controller('MainCtrl', function ($state) {
 mrmedia.config(function ($stateProvider, $urlRouterProvider) {
 
 
-  $urlRouterProvider.otherwise("/");
+  $urlRouterProvider.otherwise("/back");
   $stateProvider
     .state('app.back', {
       url: 'back/',
@@ -120,6 +120,12 @@ mrmedia.config(function ($stateProvider, $urlRouterProvider) {
       templateUrl: 'views/home.html',
       controller: 'HomeCtrl'
 
+    })
+
+    .state('app.back.managerlist', {
+      url: 'managerList',
+      templateUrl: 'views/manager-list.html',
+      controller: 'ManagerListCtrl'
     })
 
     .state('app.back.backuser', {

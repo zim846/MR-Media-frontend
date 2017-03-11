@@ -10,31 +10,25 @@ mrmedia.controller('SidebarCtrl', ['$scope', 'SidebarSrv', 'NoticeSrv',
        active: '',
        icon: 'fa fa-circle-o',
        name: '经纪人列表',
-       url: "app.company.list"
+       url: "app.back.managerlist"
      },
      {
        active: '',
        icon: 'fa fa-circle-o',
-       name: '艺人列表',
+       name: '主播列表',
        url: "app.product.list"
      },
      {
        active: '',
        icon: 'fa fa-circle-o',
-       name: '结算',
+       name: '审核',
        url: "app.query.list"
      },
      {
        active: '',
        icon: 'fa fa-circle-o',
-       name: '考核',
+       name: '结算',
        url: "app.backuser"
-     },
-     {
-       active: '',
-       icon: 'fa fa-circle-o',
-       name: '参数设置',
-       url: "app.login"
      },
      {
        active: '',
@@ -55,6 +49,12 @@ mrmedia.controller('SidebarCtrl', ['$scope', 'SidebarSrv', 'NoticeSrv',
        active: '',
        icon: 'fa fa-circle-o',
        name: '下属艺人管理',
+       url: "app.login"
+     },
+     {
+       active: '',
+       icon: 'fa fa-circle-o',
+       name: '审核状态',
        url: "app.login"
      }
    ];
