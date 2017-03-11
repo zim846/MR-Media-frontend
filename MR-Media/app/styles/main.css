@@ -34,3 +34,15 @@
   animation-delay: 0s; /*延迟时间*/
 }
 
+
+
+
+
+/*刷新背景颜色修复*/
+
+.skin-blue .wrapper,body
+{
+  background-color: #ecf0f5;
+}
+
+

@@ -10,7 +10,7 @@ mrmedia.controller('SidebarCtrl', ['$scope', 'SidebarSrv', 'NoticeSrv',
        active: '',
        icon: 'fa fa-circle-o',
        name: '经纪人列表',
-       url: "app.back.managerlist"
+       url: "app.managerlist"
      },
      {
        active: '',
