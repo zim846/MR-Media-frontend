@@ -24,8 +24,9 @@ mrmedia.config(function($httpProvider) {
 mrmedia.value('baseURL', 'http://139.224.41.121:8090/back');
 
 mrmedia.controller('MainCtrl', function ($state) {
-  $state.go('app.home');
+  $state.go('app.back.home');
 });
+
 
 // mrmedia.run(['$rootScope', 'BackuserSrv', 'NoticeSrv', function($rootScope, BackuserSrv, NoticeSrv) {
 //   $rootScope.$on('$stateChangeStart',
@@ -105,25 +106,29 @@ mrmedia.config(function ($stateProvider, $urlRouterProvider) {
 
   $urlRouterProvider.otherwise("/");
   $stateProvider
-    .state('app', {
-      url: '/',
+    .state('app.back', {
+      url: 'back/',
       templateUrl: 'views/main.html'
     })
+    .state('app', {
+      url: '/',
+      templateUrl: 'views/MRhome.html'
+    })
 
-    .state('app.home', {
+    .state('app.back.home', {
       url: 'home',
       templateUrl: 'views/home.html',
       controller: 'HomeCtrl'
 
     })
 
-    .state('app.backuser', {
+    .state('app.back.backuser', {
       url: 'backuser',
       templateUrl: 'views/backuser.html',
       controller: 'BackuserCtrl'
     })
 
-    .state('app.modifyPWD', {
+    .state('app.back.modifyPWD', {
       url: 'modifyPWD',
       templateUrl: 'views/modify-pwd.html',
       controller: 'ModifyPWDCtrl'
