@@ -1,0 +1,225 @@
+<section class="content-header">
+  <h1>
+    MR-Media
+    <small>{{managerName}}</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> 经纪人列表</a></li>
+    <li  class="active"><a href="#"><i class="fa fa-dashboard"></i> {{managerName}}</a></li>
+  </ol>
+</section>
+<section class="content">
+
+    <!-- Main content -->
+    <section class="content">
+      <section class="content">
+
+        <div class="row">
+          <div class="col-md-3">
+
+            <!-- Profile Image -->
+            <div class="box box-primary">
+              <div class="box-body box-profile">
+                <img class="profile-user-img img-responsive img-circle" ng-src="{{managerIcon}}">
+
+                <h3 class="profile-username text-center">{{managerName}}</h3>
+
+                <p class="text-muted text-center">{{managerLevel}} 级经纪人</p>
+
+                <ul class="list-group list-group-unbordered">
+                  <li class="list-group-item">
+                    <b>手机号</b> <a class="pull-right">{{managerTel}}</a>
+                  </li>
+                  <li class="list-group-item">
+                    <b>微信号</b> <a class="pull-right">{{managerWechat}}</a>
+                  </li>
+
+                </ul>
+
+                <a href="#" class="btn btn-primary btn-block"><b>修改</b></a>
+                <a href="#" class="btn btn-danger btn-block"><b>删除</b></a>
+              </div>
+              <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+
+            <!-- About Me Box -->
+            <div class="box box-primary">
+              <div class="box-header with-border">
+                <h3 class="box-title">About Me</h3>
+              </div>
+              <!-- /.box-header -->
+              <div class="box-body">
+                <strong><i class="fa fa-user margin-r-5"></i> 上级经纪人</strong>
+
+                <p class="text-muted" style="margin-top: 10px;margin-left: 15px">{{managerFather}}</p>
+
+                <hr>
+
+                <strong><i class="fa fa-credit-card margin-r-5"></i> 支付宝</strong>
+
+                <p class="text-muted" style="margin-top: 10px;margin-left: 15px">{{managerPay}}</p>
+
+                <hr>
+
+                <strong><i class="fa fa-newspaper-o margin-r-5"></i> 身份证号</strong>
+
+                <p class="text-muted" style="margin-top: 10px;margin-left: 15px">{{managerId}}</p>
+
+                <hr>
+
+                <strong><i class="fa fa-file-text-o margin-r-5"></i> 备注</strong>
+
+                <p style="margin-top: 10px;margin-left: 15px">{{managerNotes}}</p>
+              </div>
+              <!-- /.box-body -->
+            </div>
+            <!-- /.box -->
+          </div>
+          <!-- /.col -->
+          <div class="col-md-9">
+            <div class="nav-tabs-custom">
+              <ul class="nav nav-tabs" id="myTab">
+                <li class="active"><a href="#childManager" data-toggle="tab" aria-expanded="true">下属经纪人</a></li>
+                <li class=""><a href="#childAnchor" data-toggle="tab" aria-expanded="false">下属主播</a></li>
+                <li class=""><a href="#settings" data-toggle="tab" aria-expanded="false">修改</a></li>
+              </ul>
+              <div class="tab-content">
+                <div class="tab-pane active" id="childManager">
+                  <!-- 下属经纪人 -->
+                  <div class="post"  ng-repeat="item in managerCollection" >
+                    <div class="user-block">
+                      <img class="img-circle img-bordered-sm" ng-src={{item.icon}} alt="user image">
+                      <span class="username">
+                          <a href="#">{{item.name}}</a>
+                        </span>
+                      <span class="description">{{item.level}} 级经纪人</span>
+                    </div>
+                    <div style="margin-left: 50px">
+                      <span>
+                        <p>手机号: {{ item.tel}}</p>
+                        <p>微信号: {{ item.wechat}}</p>
+                        <p>身份证: {{ item.idno}}</p>
+
+                    </span>
+                    </div>
+                  </div>
+                  <!-- /.下属经纪人 -->
+
+                </div>
+                <!-- /.tab-pane -->
+                <div class="tab-pane" id="childAnchor">
+                  <!-- 下属主播 -->
+                  <div class="post"  ng-repeat="item in managerCollection" >
+                    <div class="user-block">
+                      <img class="img-circle img-bordered-sm" ng-src={{item.icon}} alt="user image">
+                      <span class="username">
+                          <a href="#">{{item.name}}</a>
+                        </span>
+                      <span class="description">{{item.level}} 级主播</span>
+                    </div>
+                    <div style="margin-left: 50px">
+                      <span>
+                        <p>手机号: {{ item.tel}}</p>
+                        <p>微信号: {{ item.wechat}}</p>
+                        <p>身份证: {{ item.idno}}</p>
+                    </span>
+                    </div>
+                  </div>
+                  <!-- /.下属经纪人 -->
+
+                </div>
+                <!-- /.tab-pane -->
+
+                <div class="tab-pane" id="settings">
+                  <form class="form-horizontal">
+                    <div class="form-group">
+                    <label for="inputName" class="col-sm-2 control-label">姓名</label>
+
+                    <div class="col-sm-10">
+                      <input type="email" class="form-control" id="inputName" placeholder="">
+                    </div>
+                  </div>
+                    <div class="form-group">
+                      <label for="inputFather" class="col-sm-2 control-label">上级经纪人</label>
+
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputFather" placeholder="">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputTel" class="col-sm-2 control-label">手机号</label>
+
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputTel" placeholder="">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputId" class="col-sm-2 control-label">身份证号</label>
+
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputId" placeholder="">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputId" class="col-sm-2 control-label">支付方式</label>
+                      <div class="col-sm-3">
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox">
+                            支付宝
+                          </label>
+                        </div>
+                      </div>
+                      <div class="col-sm-3">
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox">
+                            银行帐号
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPay" class="col-sm-2 control-label">支付帐号</label>
+                      <div class="col-sm-10">
+                        <input type="text" class="form-control" id="inputPay" placeholder="">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                    <label for="inputWeChat" class="col-sm-2 control-label">微信号</label>
+
+                    <div class="col-sm-10">
+                      <input type="text" class="form-control" id="inputWeChat" placeholder="">
+                    </div>
+                  </div>
+                    <div class="form-group">
+                      <label for="inputNotes" class="col-sm-2 control-label">备注</label>
+
+                      <div class="col-sm-10">
+                        <textarea class="form-control" id="inputNotes" placeholder=""></textarea>
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <button type="submit" class="btn btn-primary">保存</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <!-- /.tab-pane -->
+              </div>
+              <!-- /.tab-content -->
+            </div>
+            <!-- /.nav-tabs-custom -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+
+      </section>
+    </section>
+    <!-- /.content -->
+
+
+</section>

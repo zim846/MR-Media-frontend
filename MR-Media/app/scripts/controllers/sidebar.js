@@ -3,7 +3,7 @@
 mrmedia.controller('SidebarCtrl', ['$scope', 'SidebarSrv', 'NoticeSrv',
  function($scope, SidebarSrv, NoticeSrv) {
 
-  $scope.userIcon = "http://v2.freep.cn/3tb_170108150034cycw512293.jpg";
+  $scope.userIcon = "../images/icon.jpg";
 
    $scope.adminMenu = [
      {
@@ -16,13 +16,13 @@ mrmedia.controller('SidebarCtrl', ['$scope', 'SidebarSrv', 'NoticeSrv',
        active: '',
        icon: 'fa fa-circle-o',
        name: '主播列表',
-       url: "app.product.list"
+       url: "app.anchorlist"
      },
      {
        active: '',
        icon: 'fa fa-circle-o',
        name: '审核',
-       url: "app.query.list"
+       url: "app.verifylist"
      },
      {
        active: '',
