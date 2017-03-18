@@ -78,6 +78,7 @@ mrmedia.config(function ($stateProvider, $urlRouterProvider) {
       controller: 'VerifyListCtrl'
     })
 
+    
 
     .state('app.backuser', {
       url: 'backuser',

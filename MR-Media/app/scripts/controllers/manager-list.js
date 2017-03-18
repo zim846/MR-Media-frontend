@@ -10,4 +10,6 @@ mrmedia.controller('ManagerListCtrl',
         $state.go('app.managerdetail', {managerid: id});
       };
 
+
+
     }]);

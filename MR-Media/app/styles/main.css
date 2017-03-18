@@ -36,11 +36,9 @@
 
 /*模态框修改*/
 #addPlatform .modal-dialog{
-  margin: 16% auto;
 }
 
 #modifyInfo .modal-dialog{
-  margin: 10% auto;
 }
 
 #changeIcon .modal-dialog   {
@@ -48,8 +46,8 @@
   width: 900px;
 }
 
-#choosePic .modal-dialog{
-  width: 800px;
+#verifyAnchor .modal-dialog{
+  width: 50%;
 }
 
 
