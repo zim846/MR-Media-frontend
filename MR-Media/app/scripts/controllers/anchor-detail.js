@@ -1,19 +1,42 @@
 'use strict';
 
 mrmedia.controller('AnchorDetailCtrl',
-  ['$scope', 'AAnchorSrv','NoticeSrv', '$uibModal','$state','UtilSrv',
-    function($scope,AAnchorSrv,NoticeSrv, $uibModal, $state, UtilSrv) {
-      $scope.anchorName = "张嘉琦";
-      $scope.anchorLevel = "S";
-      $scope.anchorIcon = "../images/icon.jpg";
-      $scope.anchorTel = "13666666666";
-      $scope.anchorId = "123456789012345678";
-      $scope.anchorFather = "秦博";
-      $scope.anchorNotes = "一个辣鸡硕士";
-      $scope.anchorWechat = 'qinbosv';
-      $scope.anchorPay = 'qinbosv';
-      $scope.anchorCollection = AAnchorSrv.anchorDList;
-      $scope.imageCollection = AAnchorSrv.imageList;
+  ['$scope', 'AAnchorSrv','NoticeSrv', '$uibModal','$state','UtilSrv','$stateParams','$http',
+    function($scope,AAnchorSrv,NoticeSrv, $uibModal, $state, UtilSrv,$stateParams,$http) {
+      var anchorId = $stateParams.anchorid;
+      var token = '5258e46def87e29e1c7a2f7f2b3a4792';
+      //get anchor info
+      var url = "http://10.60.36.16:8080/user/sub_employee/" + anchorId + "?token=" + token;
+      $http.post(url).then(function(response) {
+        //响应成功
+        var ancInfo = response.data;
+        if (ancInfo.errCode == 0) {
+          $scope.anchorName = ancInfo.employee.realName;
+          $scope.anchorLevel = ancInfo.employee.level;
+          $scope.anchorIcon = "../images/icon.jpg";
+          $scope.anchorTel = ancInfo.employee.tel;
+          $scope.anchorId = ancInfo.employee.idNumber;
+          $scope.anchorFather = ancInfo.employee.parentName;
+          $scope.anchorNotes = "一个辣鸡硕士";
+          $scope.anchorWechat = ancInfo.employee.weChat;
+          $scope.anchorPay = ancInfo.employee.settleCount;
+          $scope.anchorCollection = ancInfo.platforms;
+        }else{
+          alert('error');
+        }
+      });
+
+      // $scope.anchorName = "张嘉琦";
+      // $scope.anchorLevel = "S";
+      // $scope.anchorIcon = "../images/icon.jpg";
+      // $scope.anchorTel = "13666666666";
+      // $scope.anchorId = "123456789012345678";
+      // $scope.anchorFather = "秦博";
+      // $scope.anchorNotes = "一个辣鸡硕士";
+      // $scope.anchorWechat = 'qinbosv';
+      // $scope.anchorPay = 'qinbosv';
+       //$scope.anchorCollection = AAnchorSrv.anchorDList;
+       $scope.imageCollection = AAnchorSrv.imageList;
 
       $('#myTab a').click(function (e) {
         e.preventDefault();
@@ -32,7 +55,26 @@ mrmedia.controller('AnchorDetailCtrl',
           return false
       };
 
-
+      $scope.modify_submit = function(){
+        var platform = {
+            name : $scope.platform.name,
+            uid : anchorId,
+            validDay : $scope.platform.validDay,
+            validHour : $scope.platform.validHour,
+            giftCount : $scope.platform.gift,
+            settleCount : $scope.platform.count
+        };
+        var _url = "http://10.60.36.16:8080/user/add_platform?token=" + token;
+        $http.post(_url,platform).then(function(response) {
+          //响应成功
+          var ancInfo = response.data;
+          if (ancInfo.errCode == 0) {
+            alert('success');
+          }else{
+            alert('error');
+          }
+        });
+      }
 
       $('.avatar-input').change(function(event) {
           // 根据这个 <input> 获取文件的 HTML5 js 对象

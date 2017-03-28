@@ -42,14 +42,14 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="item in rowCollection" ng-click="gotoDetailPage(item.id)">
-                  <td>{{item.name}}</td>
+                <tr ng-repeat="item in rowCollection" ng-click="gotoDetailPage(item.uid)">
+                  <td>{{item.realName}}</td>
                   <td>{{item.tel}}</td>
-                  <td>{{item.wechat}}</td>
+                  <td>{{item.weChat}}</td>
                   <td>{{item.level}}</td>
-                  <td>{{item.father}}</td>
-                  <td>{{item.idno}}</td>
-                  <td>{{item.anchor}}</td>
+                  <td>{{item.parentName}}</td>
+                  <td>{{item.uid}}</td>
+                  <td>{{item.subNumber}}</td>
                 </tr>
 
 

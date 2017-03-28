@@ -1,16 +1,17 @@
 'use strict';
 
 mrmedia.service('AManagerSrv', ['$resource','$http', 'baseURL' ,function ($resource, $http, baseURL) {
+
   this.managerList = [
-    {
-      name: '秦波',
-      tel: '1396666666',
-      wechat: 'qinbosb',
-      level:'4',
-      father: '谭靖儒',
-      idno:'123456789012345678',
-      anchor:'5'
-    },
+    // {
+    //   realName: '秦波',
+    //   tel: '1396666666',
+    //   weChat: 'qinbosb',
+    //   level:'4',
+    //   parent: '谭靖儒',
+    //   uid:'123456789012345678',
+    //   anchor:'5'
+    // },
     {
       name: '秦波',
       tel: '1396666666',

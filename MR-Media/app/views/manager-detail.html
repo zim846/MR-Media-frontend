@@ -88,19 +88,19 @@
               <div class="tab-content">
                 <div class="tab-pane active" id="childManager">
                   <!-- 下属经纪人 -->
-                  <div class="post"  ng-repeat="item in managerCollection" >
+                  <div class="post"  ng-repeat="item in subManager" >
                     <div class="user-block">
-                      <img class="img-circle img-bordered-sm" ng-src={{item.icon}} alt="user image">
+                      <img class="img-circle img-bordered-sm" ng-src={{item.avatar}} alt="user image">
                       <span class="username">
-                          <a href="#">{{item.name}}</a>
+                          <a href="#">{{item.realName}}</a>
                         </span>
                       <span class="description">{{item.level}} 级经纪人</span>
                     </div>
                     <div style="margin-left: 50px">
                       <span>
                         <p>手机号: {{ item.tel}}</p>
-                        <p>微信号: {{ item.wechat}}</p>
-                        <p>身份证: {{ item.idno}}</p>
+                        <p>微信号: {{ item.weChat}}</p>
+                        <p>身份证: {{ item.idNumber}}</p>
 
                     </span>
                     </div>
@@ -111,19 +111,19 @@
                 <!-- /.tab-pane -->
                 <div class="tab-pane" id="childAnchor">
                   <!-- 下属主播 -->
-                  <div class="post"  ng-repeat="item in managerCollection" >
+                  <div class="post"  ng-repeat="item in subActor" >
                     <div class="user-block">
-                      <img class="img-circle img-bordered-sm" ng-src={{item.icon}} alt="user image">
+                      <img class="img-circle img-bordered-sm" ng-src={{item.avatar}} alt="user image">
                       <span class="username">
-                          <a href="#">{{item.name}}</a>
+                          <a href="#">{{item.realName}}</a>
                         </span>
                       <span class="description">{{item.level}} 级主播</span>
                     </div>
                     <div style="margin-left: 50px">
                       <span>
                         <p>手机号: {{ item.tel}}</p>
-                        <p>微信号: {{ item.wechat}}</p>
-                        <p>身份证: {{ item.idno}}</p>
+                        <p>微信号: {{ item.weChat}}</p>
+                        <p>身份证: {{ item.idNumber}}</p>
                     </span>
                     </div>
                   </div>

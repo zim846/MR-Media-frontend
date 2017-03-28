@@ -43,15 +43,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr ng-repeat="item in rowCollection" ng-click="gotoDetailPage(item.id)">
-                  <td>{{item.name}}</td>
-                  <td>{{item.status}}</td>
+                <tr ng-repeat="item in rowCollection" ng-click="gotoDetailPage(item.uid)">
+                  <td>{{item.realName}}</td>
+                  <td>{{item.active}}</td>
                   <td>{{item.tel}}</td>
-                  <td>{{item.wechat}}</td>
+                  <td>{{item.weChat}}</td>
                   <td>{{item.level}}</td>
-                  <td>{{item.father}}</td>
-                  <td>{{item.idno}}</td>
-                  <td>{{item.adress}}</td>
+                  <td>{{item.parentName}}</td>
+                  <td>{{item.idNumber}}</td>
+                  <td>{{item.location}}</td>
                 </tr>
 
 

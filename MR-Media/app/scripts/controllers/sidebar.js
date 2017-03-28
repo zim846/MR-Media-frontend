@@ -57,7 +57,7 @@ mrmedia.controller('SidebarCtrl', ['$scope', 'SidebarSrv', 'NoticeSrv',
        name: '审核状态',
        url: "app.verifyStatus"
      }
-   ];
+   ]; 
 
    $scope.menu_active = function(index){
      $scope.adminMenu.forEach(function(elem,i){
