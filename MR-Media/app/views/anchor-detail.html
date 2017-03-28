@@ -139,17 +139,17 @@
                     <a href="#" class="pull-right btn-box-tool" style="margin-right: 20px"><i class="fa fa-edit"></i></a>
                     <div style="margin-top: 10px">
                       <div class="col-sm-offset-1 col-sm-4"><strong>直播平台: </strong></div>
-                      <div class="col-sm-4"><p>{{item.platform}}</p></div>
+                      <div class="col-sm-4"><p>{{item.name}}</p></div>
                       <div class="col-sm-offset-1 col-sm-4"><strong>ID: </strong></div>
-                      <div class="col-sm-4"><p>{{item.id}}</p></div>
+                      <div class="col-sm-4"><p>{{item.uid}}</p></div>
                       <div class="col-sm-offset-1 col-sm-4"><strong>有效天: </strong></div>
-                      <div class="col-sm-4"><p>{{item.day}}</p></div>
+                      <div class="col-sm-4"><p>{{item.validDay}}</p></div>
                       <div class="col-sm-offset-1 col-sm-4"><strong>时长: </strong></div>
-                      <div class="col-sm-4"><p>{{item.time}}</p></div>
+                      <div class="col-sm-4"><p>{{item.validHour}}</p></div>
                       <div class="col-sm-offset-1 col-sm-4"><strong>礼物: </strong></div>
-                      <div class="col-sm-4"><p>{{item.gift}}</p></div>
+                      <div class="col-sm-4"><p>{{item.giftCount}}</p></div>
                       <div class="col-sm-offset-1 col-sm-4"><strong>结算: </strong></div>
-                      <div class="col-sm-4"><p>{{item.account}}</p></div>
+                      <div class="col-sm-4"><p>{{item.settleCount}}</p></div>
                       <hr class="col-sm-12">
                     </div>
 
@@ -218,37 +218,37 @@
               <div class="form-group">
                 <label for="inputPlatform" class="col-sm-2 control-label">直播平台</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputPlatform" placeholder="">
+                  <input type="text" class="form-control" id="inputPlatform" placeholder="" ng-model="platform.name">
                 </div>
               </div>
-              <div class="form-group">
-                <label for="inputId" class="col-sm-2 control-label">ID</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputId" placeholder="">
-                </div>
-              </div>
+              <!--<div class="form-group">-->
+                <!--<label for="inputId" class="col-sm-2 control-label">ID</label>-->
+                <!--<div class="col-sm-10">-->
+                  <!--<input type="text" class="form-control" id="inputId" placeholder="">-->
+                <!--</div>-->
+              <!--</div>-->
               <div class="form-group">
                 <label for="inputDay" class="col-sm-2 control-label">有效天</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputDay" placeholder="">
+                  <input type="text" class="form-control" id="inputDay" placeholder="" ng-model="platform.validDay">
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputTime" class="col-sm-2 control-label">时长</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputTime" placeholder="">
+                  <input type="text" class="form-control" id="inputTime" placeholder="" ng-model="platform.validHour">
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputGift" class="col-sm-2 control-label">礼物</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputGift" placeholder="">
+                  <input type="text" class="form-control" id="inputGift" placeholder="" ng-model="platform.gift">
                 </div>
               </div>
               <div class="form-group">
                 <label for="inputAccount" class="col-sm-2 control-label">结算</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="inputAccount" placeholder="">
+                  <input type="text" class="form-control" id="inputAccount" placeholder="" ng-model="platform.count">
                 </div>
               </div>
             </form>

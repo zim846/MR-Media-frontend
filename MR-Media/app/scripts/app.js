@@ -54,7 +54,7 @@ mrmedia.config(function ($stateProvider, $urlRouterProvider) {
 
     .state('app.managerdetail', {
       url: 'managerDetail',
-      params:{"manageid":''},
+      params:{"managerid":null},
       templateUrl: 'views/manager-detail.html',
       controller: 'ManagerDetailCtrl'
     })
@@ -67,7 +67,7 @@ mrmedia.config(function ($stateProvider, $urlRouterProvider) {
 
     .state('app.anchordetail', {
       url: 'anchorDetail',
-      params:{"anchorid":''},
+      params:{"anchorid":null},
       templateUrl: 'views/anchor-detail.html',
       controller: 'AnchorDetailCtrl'
     })
@@ -78,7 +78,7 @@ mrmedia.config(function ($stateProvider, $urlRouterProvider) {
       controller: 'VerifyListCtrl'
     })
 
-    
+
 
     .state('app.backuser', {
       url: 'backuser',
