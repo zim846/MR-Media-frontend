@@ -135,7 +135,7 @@ gulp.task('copy:fonts', function () {
         .pipe(gulp.dest(mrmedia.dist + '/fonts'));
     gulp.src('./bower_components/font-awesome/fonts/**/*.{ttf,woff,eof,svg}*')
         .pipe(gulp.dest('./dist/fonts'));
-    gulp.src('./bower_components/materialize/fonts/**/*.{ttf,woff,eof,svg}*')
+    gulp.src('./bower_components/bootstrap/fonts/**/*.{ttf,woff,eof,svg}*')
         .pipe(gulp.dest('./dist/fonts'));
 
 });

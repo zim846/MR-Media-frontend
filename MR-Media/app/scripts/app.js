@@ -78,12 +78,23 @@ mrmedia.config(function ($stateProvider, $urlRouterProvider) {
       controller: 'VerifyListCtrl'
     })
 
-    
+    .state('app.settlement', {
+      url: 'settlement',
+      templateUrl: 'views/settlement.html',
+      controller: 'SettlementCtrl'
+    })
+
 
     .state('app.backuser', {
       url: 'backuser',
       templateUrl: 'views/backuser.html',
       controller: 'BackuserCtrl'
+    })
+
+    .state('app.verifyStatus', {
+      url: 'verifystatus',
+      templateUrl: 'views/verify-status.html',
+      controller: 'VerifyStatusCtrl'
     })
 
     .state('app.modifyPWD', {

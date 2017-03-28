@@ -28,13 +28,13 @@ mrmedia.controller('SidebarCtrl', ['$scope', 'SidebarSrv', 'NoticeSrv',
        active: '',
        icon: 'fa fa-circle-o',
        name: '结算',
-       url: "app.backuser"
+       url: "app.settlement"
      },
      {
        active: '',
        icon: 'fa fa-circle-o',
        name: '管理员设置',
-       url: "app.login"
+       url: "app.backuser"
      }
    ];
 
@@ -55,12 +55,12 @@ mrmedia.controller('SidebarCtrl', ['$scope', 'SidebarSrv', 'NoticeSrv',
        active: '',
        icon: 'fa fa-circle-o',
        name: '审核状态',
-       url: "app.login"
+       url: "app.verifyStatus"
      }
    ];
 
    $scope.menu_active = function(index){
-     $scope.menu.forEach(function(elem,i){
+     $scope.adminMenu.forEach(function(elem,i){
        elem.active = "";
        if(index===i){
          elem.active = "active";
