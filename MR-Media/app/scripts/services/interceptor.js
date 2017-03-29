@@ -9,13 +9,9 @@ mrmedia.factory('myInterceptor',
                         // 2016.6.3改 所有的请求都在url中注入token
                         arguments[0].params = arguments[0].params || {};
                         arguments[0].params.token = token.getToken();
-                        if (arguments[0].method === 'GET' || arguments[0].method === 'DELETE' || arguments[0].method === 'OPTIONS') {
+                        if (arguments[0].method === 'GET' || arguments[0].method === 'DELETE' || arguments[0].method === 'OPTIONS'||arguments[0].method === 'POST' || arguments[0].method === 'PUT') {
                             arguments[0].params = arguments[0].params || {};
                             arguments[0].params.token = token.getToken();
-                        }
-                        if (arguments[0].method === 'POST' || arguments[0].method === 'PUT') {
-                            arguments[0].data = arguments[0].data || {};
-                            arguments[0].data.token = token.getToken();
                         }
                     }
 
