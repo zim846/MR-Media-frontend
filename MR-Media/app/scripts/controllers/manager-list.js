@@ -3,10 +3,10 @@
 mrmedia.controller('ManagerListCtrl',
   ['$scope', 'AManagerSrv','NoticeSrv', '$uibModal','$state','UtilSrv','$http','AdminSrv',
     function($scope,AManagerSrv,NoticeSrv, $uibModal, $state, UtilSrv,$http,AdminSrv) {
-
-      var token = '5258e46def87e29e1c7a2f7f2b3a4792';
+      
       var managerList = {};
-      AdminSrv.getAgents().get().$promise.then(function(response){
+      AdminSrv.getAgents().get()
+        .$promise.then(function(response){
         if(response.errCode === 0){
           NoticeSrv.success("成功");
           managerList = response.agents;

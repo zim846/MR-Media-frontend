@@ -1,30 +1,57 @@
 'use strict';
 
 mrmedia.controller('AnchorDetailCtrl',
-  ['$scope', 'AAnchorSrv','NoticeSrv', '$uibModal','$state','UtilSrv','$stateParams','$http',
-    function($scope,AAnchorSrv,NoticeSrv, $uibModal, $state, UtilSrv,$stateParams,$http) {
+  ['$scope', 'AAnchorSrv','NoticeSrv', '$uibModal','$state','UtilSrv','$stateParams','$http','AdminSrv',
+    function($scope,AAnchorSrv,NoticeSrv, $uibModal, $state, UtilSrv,$stateParams,$http,AdminSrv) {
       var anchorId = $stateParams.anchorid;
       var token = '5258e46def87e29e1c7a2f7f2b3a4792';
+      var talents = ['吹','拉','弹','唱'];
+      var settleType = ['支付宝','银行账号'];
       //get anchor info
-      var url = "http://10.60.36.16:8080/user/sub_employee/" + anchorId + "?token=" + token;
-      $http.post(url).then(function(response) {
-        //响应成功
-        var ancInfo = response.data;
-        if (ancInfo.errCode == 0) {
-          $scope.anchorName = ancInfo.employee.realName;
-          $scope.anchorLevel = ancInfo.employee.level;
+      AdminSrv.getActorDetail(anchorId).add()
+        .$promise.then(function(response){
+        if(response.errCode === 0){
+          NoticeSrv.success("成功");
+          $scope.anchorName = response.employee.realName;
+          $scope.anchorLevel = response.employee.level;
           $scope.anchorIcon = "../images/icon.jpg";
-          $scope.anchorTel = ancInfo.employee.tel;
-          $scope.anchorId = ancInfo.employee.idNumber;
-          $scope.anchorFather = ancInfo.employee.parentName;
+          $scope.anchorTel = response.employee.tel;
+          $scope.anchorId = response.employee.idNumber;
+          $scope.anchorFather = response.employee.parentName;
           $scope.anchorNotes = "一个辣鸡硕士";
-          $scope.anchorWechat = ancInfo.employee.weChat;
-          $scope.anchorPay = ancInfo.employee.settleCount;
-          $scope.anchorCollection = ancInfo.platforms;
+          $scope.anchorWechat = response.employee.weChat;
+          $scope.anchorLocation = response.employee.location;
+          $scope.anchorPay = response.employee.settleCount;
+          $scope.anchorType = settleType[response.employee.settleType];
+          $scope.talentType = talents[response.employee.talentType];
+          $scope.anchorCollection = response.platforms;
+          $scope.anchorState = 1 - response.active;
         }else{
-          alert('error');
+          NoticeSrv.error("失败");
         }
       });
+
+
+
+      // var url = "http://10.60.36.16:8080/user/sub_employee/" + anchorId + "?token=" + token;
+      // $http.post(url).then(function(response) {
+      //   //响应成功
+      //   var ancInfo = response.data;
+      //   if (ancInfo.errCode == 0) {
+      //     $scope.anchorName = ancInfo.employee.realName;
+      //     $scope.anchorLevel = ancInfo.employee.level;
+      //     $scope.anchorIcon = "../images/icon.jpg";
+      //     $scope.anchorTel = ancInfo.employee.tel;
+      //     $scope.anchorId = ancInfo.employee.idNumber;
+      //     $scope.anchorFather = ancInfo.employee.parentName;
+      //     $scope.anchorNotes = "一个辣鸡硕士";
+      //     $scope.anchorWechat = ancInfo.employee.weChat;
+      //     $scope.anchorPay = ancInfo.employee.settleCount;
+      //     $scope.anchorCollection = ancInfo.platforms;
+      //   }else{
+      //     alert('error');
+      //   }
+      // });
 
       // $scope.anchorName = "张嘉琦";
       // $scope.anchorLevel = "S";
@@ -55,7 +82,11 @@ mrmedia.controller('AnchorDetailCtrl',
           return false
       };
 
-      $scope.modify_submit = function(){
+      $scope.editactor = function () {
+
+      }
+
+      $scope.add_platform_submit = function(){
         var platform = {
             name : $scope.platform.name,
             uid : anchorId,
@@ -64,17 +95,54 @@ mrmedia.controller('AnchorDetailCtrl',
             giftCount : $scope.platform.gift,
             settleCount : $scope.platform.count
         };
-        var _url = "http://10.60.36.16:8080/user/add_platform?token=" + token;
-        $http.post(_url,platform).then(function(response) {
-          //响应成功
-          var ancInfo = response.data;
-          if (ancInfo.errCode == 0) {
-            alert('success');
+
+        //add platform
+        AdminSrv.addActorPlatform().add(platform)
+          .$promise.then(function(response){
+          if(response.errCode === 0){
+            NoticeSrv.success("成功");
           }else{
-            alert('error');
+            NoticeSrv.error("失败");
           }
         });
-      }
+
+        // var _url = "http://10.60.36.16:8080/user/add_platform?token=" + token;
+        // $http.post(_url,platform).then(function(response) {
+        //   //响应成功
+        //   var ancInfo = response.data;
+        //   if (ancInfo.errCode == 0) {
+        //     alert('success');
+        //   }else{
+        //     alert('error');
+        //   }
+        // });
+      };
+      $scope.modify_submit = function(){
+        var actor = {
+          // 'active' : $scope.anchorState,
+          'active' :1,
+          'idNumber' : $scope.anchorId,
+          'level':$scope.anchorLevel,
+          'location': $scope.anchorLocation,
+          'parentUid': $scope.anchorParentUid,
+          'phoneNumber' : $scope.anchorTel,
+          'realName' : $scope.anchorName,
+          'settleAccount': $scope.anchorPay,
+          'settleType': settleType.indexOf($scope.anchorType),
+          'talentType': talents.indexOf($scope.talentType),
+          'weChatNumber': $scope.anchorWechat
+        }
+        //edit actor
+        AdminSrv.editActorInfo(anchorId).add(actor)
+          .$promise.then(function(response){
+          if(response.errCode === 0){
+            NoticeSrv.success("成功");
+          }else{
+            NoticeSrv.error("失败");
+          }
+        });
+
+      };
 
       $('.avatar-input').change(function(event) {
           // 根据这个 <input> 获取文件的 HTML5 js 对象
