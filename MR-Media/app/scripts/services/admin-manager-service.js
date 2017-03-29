@@ -2,6 +2,7 @@
 
 mrmedia.service('AManagerSrv', ['$resource','$http', 'baseURL' ,function ($resource, $http, baseURL) {
 
+  
   this.managerList = [
     // {
     //   realName: '秦波',
