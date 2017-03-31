@@ -49,6 +49,7 @@
                 </ul>
 
                 <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#modifyInfo"><b>修改</b></a>
+                <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#addSettleRecord"><b>新增结算</b></a>
                 <!--<a href="#" class="btn btn-danger btn-block"><b>删除</b></a>-->
               </div>
               <!-- /.box-body -->
@@ -152,8 +153,6 @@
                       <div class="col-sm-4"><p>{{item.settleCount}}</p></div>
                       <hr class="col-sm-12">
                     </div>
-
-
                   </div>
                 </div>
                 <!-- /.row -->
@@ -287,7 +286,7 @@
                 <div class="col-sm-10">
                   <div class="checkbox">
                     <label>
-                      <input type="checkbox" ng-model="anchorState">
+                      <input type="checkbox" ng-model="!!anchorState">
                       在播中
                     </label>
                   </div>
@@ -384,7 +383,62 @@
   </div>
 </div>
 
+<div class="modal fade" id="addSettleRecord" tabindex="-1" role="dialog" aria-labelledby="addSettleRecordLabel">
+  <div class="modal-dialog" role="document">
+    <div class="box box-info">
 
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="addSettleRecordLabel">新增结算</h4>
+        </div>
+        <div class="modal-body">
+          <div>
+            <form class="form-horizontal">
+              <div class="form-group">
+              <label for="platform" class="col-sm-2 control-label">平台名称</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="platform" ng-model="settle_platform">
+              </div>
+              </div>
+              <div class="form-group">
+                <label for="platformId" class="col-sm-2 control-label">你的平台Id</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="platformId" ng-model="settle_platformId">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="platformName" class="col-sm-2 control-label">你的平台名称</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="platformName" ng-model="settle_platformName">
+                </div>
+              </div>
+              <div class="form-group">
+                <label  class="col-sm-2 control-label">时间</label>
+                <div class="col-sm-2">
+                  <input type="text" class="form-control" id="year" ng-model="settle_year"/>
+                  <span>年</span>
+                  <input type="text" class="form-control" id="month" ng-model="settle_month"/>
+                  <span>月</span>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="amount" class="col-sm-2 control-label">结算金额</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="amount" ng-model="settle_amount">
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" ng-click="add_settle_record()">保存</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 
 <div class="modal fade" id="avatar-modal" aria-hidden="true" aria-labelledby="avatar-modal-label" role="dialog" tabindex="-1">

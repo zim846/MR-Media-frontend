@@ -25,7 +25,7 @@ mrmedia.controller('AnchorDetailCtrl',
           $scope.anchorType = settleType[response.employee.settleType];
           $scope.talentType = talents[response.employee.talentType];
           $scope.anchorCollection = response.platforms;
-          $scope.anchorState = 1 - response.active;
+          $scope.anchorState = 1 - response.employee.active;
         }else{
           NoticeSrv.error("失败");
         }
@@ -101,6 +101,7 @@ mrmedia.controller('AnchorDetailCtrl',
           .$promise.then(function(response){
           if(response.errCode === 0){
             NoticeSrv.success("成功");
+            $('#addPlatform').modal('hide');
           }else{
             NoticeSrv.error("失败");
           }
@@ -120,7 +121,7 @@ mrmedia.controller('AnchorDetailCtrl',
       $scope.modify_submit = function(){
         var actor = {
           // 'active' : $scope.anchorState,
-          'active' :1,
+          'active' :1 - $scope.anchorState,
           'idNumber' : $scope.anchorId,
           'level':$scope.anchorLevel,
           'location': $scope.anchorLocation,
@@ -137,6 +138,29 @@ mrmedia.controller('AnchorDetailCtrl',
           .$promise.then(function(response){
           if(response.errCode === 0){
             NoticeSrv.success("成功");
+            $('#modifyInfo').modal('hide');
+          }else{
+            NoticeSrv.error("失败");
+          }
+        });
+
+      };
+      $scope.add_settle_record = function (){
+          var record = {
+            "amount": $scope.settle_amount,
+            "month": $scope.settle_month,
+            "platform": $scope.settle_platform,
+            "platformId": $scope.settle_platformId,
+            "platformName": $scope.settle_platformName,
+            "uid": anchorId,
+            "year": $scope.settle_year
+          };
+        //add settle record
+        AdminSrv.addSettleRecord().add(record)
+          .$promise.then(function(response){
+          if(response.errCode === 0){
+            NoticeSrv.success("成功");
+            $('#addSettleRecord').modal('hide');
           }else{
             NoticeSrv.error("失败");
           }

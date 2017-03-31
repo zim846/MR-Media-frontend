@@ -45,4 +45,9 @@ mrmedia.service('AdminSrv', ['$resource','$http', 'baseURL' ,function ($resource
     return $resource(baseURL + '/actor/edit/' + actorId , null, {'add':{ method:'POST' }});
   }
 
+  //添加结算表
+  this.addSettleRecord = function(){
+    return $resource(baseURL + '/settle/add' , null, {'add':{ method:'POST' }});
+  }
+
 }]);
