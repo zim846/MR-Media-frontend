@@ -64,7 +64,12 @@ mrmedia.controller('AnchorDetailCtrl',
       // $scope.anchorPay = 'qinbosv';
        //$scope.anchorCollection = AAnchorSrv.anchorDList;
        $scope.imageCollection = AAnchorSrv.imageList;
-
+      $scope.checkSettleType = function(){
+        if($scope.anchorType == '支付宝')
+          return true;
+        else 
+          return false;
+      }
       $('#myTab a').click(function (e) {
         e.preventDefault();
         $(this).tab('show');

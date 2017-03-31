@@ -72,7 +72,7 @@
 
                 <strong><i class="fa fa-map-marker margin-r-5"></i> 所在地</strong>
 
-                <p class="text-muted" style="margin-top: 10px;margin-left: 15px">外地</p>
+                <p class="text-muted" style="margin-top: 10px;margin-left: 15px" >{{anchorLocation}}</p>
 
                 <hr>
 
@@ -87,7 +87,8 @@
 
                 <hr>
 
-                <strong><i class="fa fa-credit-card margin-r-5"></i> 支付宝</strong>
+                <strong  ng-show="checkSettleType()" ng-hide="!checkSettleType()"><i class="fa fa-credit-card margin-r-5"></i> 支付宝</strong>
+                <strong  ng-show="!checkSettleType()" ng-hide="checkSettleType()"><i class="fa fa-credit-card margin-r-5" ></i> 银行账号</strong>
 
                 <p class="text-muted" style="margin-top: 10px;margin-left: 15px">{{anchorPay}}</p>
 

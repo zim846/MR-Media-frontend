@@ -37,8 +37,7 @@
 
                 </ul>
 
-                <a href="#" class="btn btn-primary btn-block"><b>修改</b></a>
-                <a href="#" class="btn btn-danger btn-block"><b>删除</b></a>
+                <a class="btn btn-primary btn-block" data-toggle="modal" data-target="#modifyInfo"><b>修改</b></a>
               </div>
               <!-- /.box-body -->
             </div>
@@ -83,7 +82,6 @@
               <ul class="nav nav-tabs" id="myTab">
                 <li class="active"><a href="#childManager" data-toggle="tab" aria-expanded="true">下属经纪人</a></li>
                 <li class=""><a href="#childAnchor" data-toggle="tab" aria-expanded="false">下属主播</a></li>
-                <li class=""><a href="#settings" data-toggle="tab" aria-expanded="false">修改</a></li>
               </ul>
               <div class="tab-content">
                 <div class="tab-pane active" id="childManager">
@@ -132,82 +130,82 @@
                 </div>
                 <!-- /.tab-pane -->
 
-                <div class="tab-pane" id="settings">
-                  <form class="form-horizontal">
-                    <div class="form-group">
-                    <label for="inputName" class="col-sm-2 control-label">姓名</label>
+                <!--<div class="tab-pane" id="settings">-->
+                  <!--<form class="form-horizontal">-->
+                    <!--<div class="form-group">-->
+                    <!--<label for="inputName" class="col-sm-2 control-label">姓名</label>-->
 
-                    <div class="col-sm-10">
-                      <input type="email" class="form-control" id="inputName" placeholder="">
-                    </div>
-                  </div>
-                    <div class="form-group">
-                      <label for="inputFather" class="col-sm-2 control-label">上级经纪人</label>
+                    <!--<div class="col-sm-10">-->
+                      <!--<input type="email" class="form-control" id="inputName" placeholder="">-->
+                    <!--</div>-->
+                  <!--</div>-->
+                    <!--<div class="form-group">-->
+                      <!--<label for="inputFather" class="col-sm-2 control-label">上级经纪人</label>-->
 
-                      <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputFather" placeholder="">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="inputTel" class="col-sm-2 control-label">手机号</label>
+                      <!--<div class="col-sm-10">-->
+                        <!--<input type="email" class="form-control" id="inputFather" placeholder="">-->
+                      <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                      <!--<label for="inputTel" class="col-sm-2 control-label">手机号</label>-->
 
-                      <div class="col-sm-10">
-                        <input type="email" class="form-control" id="inputTel" placeholder="">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="inputId" class="col-sm-2 control-label">身份证号</label>
+                      <!--<div class="col-sm-10">-->
+                        <!--<input type="email" class="form-control" id="inputTel" placeholder="">-->
+                      <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                      <!--<label for="inputId" class="col-sm-2 control-label">身份证号</label>-->
 
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputId" placeholder="">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="inputId" class="col-sm-2 control-label">支付方式</label>
-                      <div class="col-sm-3">
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox">
-                            支付宝
-                          </label>
-                        </div>
-                      </div>
-                      <div class="col-sm-3">
-                        <div class="checkbox">
-                          <label>
-                            <input type="checkbox">
-                            银行帐号
-                          </label>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <label for="inputPay" class="col-sm-2 control-label">支付帐号</label>
-                      <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputPay" placeholder="">
-                      </div>
-                    </div>
-                    <div class="form-group">
-                    <label for="inputWeChat" class="col-sm-2 control-label">微信号</label>
+                      <!--<div class="col-sm-10">-->
+                        <!--<input type="text" class="form-control" id="inputId" placeholder="">-->
+                      <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                      <!--<label for="inputId" class="col-sm-2 control-label">支付方式</label>-->
+                      <!--<div class="col-sm-3">-->
+                        <!--<div class="checkbox">-->
+                          <!--<label>-->
+                            <!--<input type="checkbox">-->
+                            <!--支付宝-->
+                          <!--</label>-->
+                        <!--</div>-->
+                      <!--</div>-->
+                      <!--<div class="col-sm-3">-->
+                        <!--<div class="checkbox">-->
+                          <!--<label>-->
+                            <!--<input type="checkbox">-->
+                            <!--银行帐号-->
+                          <!--</label>-->
+                        <!--</div>-->
+                      <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                      <!--<label for="inputPay" class="col-sm-2 control-label">支付帐号</label>-->
+                      <!--<div class="col-sm-10">-->
+                        <!--<input type="text" class="form-control" id="inputPay" placeholder="">-->
+                      <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                    <!--<label for="inputWeChat" class="col-sm-2 control-label">微信号</label>-->
 
-                    <div class="col-sm-10">
-                      <input type="text" class="form-control" id="inputWeChat" placeholder="">
-                    </div>
-                  </div>
-                    <div class="form-group">
-                      <label for="inputNotes" class="col-sm-2 control-label">备注</label>
+                    <!--<div class="col-sm-10">-->
+                      <!--<input type="text" class="form-control" id="inputWeChat" placeholder="">-->
+                    <!--</div>-->
+                  <!--</div>-->
+                    <!--<div class="form-group">-->
+                      <!--<label for="inputNotes" class="col-sm-2 control-label">备注</label>-->
 
-                      <div class="col-sm-10">
-                        <textarea class="form-control" id="inputNotes" placeholder=""></textarea>
-                      </div>
-                    </div>
-                    <div class="form-group">
-                      <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-primary">保存</button>
-                      </div>
-                    </div>
-                  </form>
-                </div>
+                      <!--<div class="col-sm-10">-->
+                        <!--<textarea class="form-control" id="inputNotes" placeholder=""></textarea>-->
+                      <!--</div>-->
+                    <!--</div>-->
+                    <!--<div class="form-group">-->
+                      <!--<div class="col-sm-offset-2 col-sm-10">-->
+                        <!--<button type="submit" class="btn btn-primary">保存</button>-->
+                      <!--</div>-->
+                    <!--</div>-->
+                  <!--</form>-->
+                <!--</div>-->
                 <!-- /.tab-pane -->
               </div>
               <!-- /.tab-content -->
@@ -224,3 +222,123 @@
 
 
 </section>
+<div class="modal fade" id="modifyInfo" tabindex="-1" role="dialog" aria-labelledby="modifyInfoLabel">
+  <div class="modal-dialog" role="document">
+    <div class="box box-info">
+
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="modifyInfoLabel">修改信息</h4>
+        </div>
+        <div class="modal-body">
+          <div>
+            <form class="form-horizontal">
+              <div class="form-group">
+                <label for="inputName" class="col-sm-2 control-label">姓名</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputName" ng-model="managerName">
+                </div>
+              </div>
+
+              <!--<div class="form-group">-->
+                <!--<label  class="col-sm-2 control-label">状态</label>-->
+                <!--<div class="col-sm-10">-->
+                  <!--<div class="checkbox">-->
+                    <!--<label>-->
+                      <!--<input type="checkbox" ng-model="anchorState">-->
+                      <!--在播中-->
+                    <!--</label>-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+
+              <!--<div class="form-group">-->
+                <!--<label  class="col-sm-2 control-label">评级</label>-->
+                <!--<div class="col-sm-3">-->
+                  <!--<div ng-init="ooo=[1,2,3,4,5]; a=ooo[1];">-->
+                    <!--<select ng-model="anchorLevel" ng-options="x for x in ooo" ng-change="show()">-->
+                    <!--</select>-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+
+              <div class="form-group">
+                <label for="inputTel" class="col-sm-2 control-label">手机号</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputTel" ng-model="managerTel">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputWechat" class="col-sm-2 control-label">微信号</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputWechat" ng-model="managerWechat">
+                </div>
+              </div>
+              <!--<div class="form-group">-->
+                <!--<label for="inputManager" class="col-sm-2 control-label">上级经纪人</label>-->
+                <!--<div class="col-sm-10">-->
+                  <!--<input type="text" class="form-control" id="inputManager" ng-model="anchorFather">-->
+                <!--</div>-->
+              <!--</div>-->
+              <!--<div class="form-group">-->
+                <!--<label for="inputAddress" class="col-sm-2 control-label">所在地</label>-->
+                <!--<div class="col-sm-10">-->
+                  <!--<input type="text" class="form-control" id="inputAddress" ng-model="anchorLocation">-->
+                <!--</div>-->
+              <!--</div>-->
+              <div class="form-group">
+                <label for="parentuid" class="col-sm-2 control-label">上级经纪人 UId</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="parentuid" ng-model="managerParentUid">
+                </div>
+              </div>
+              <!--<div class="form-group">-->
+                <!--<label  class="col-sm-2 control-label">技能</label>-->
+                <!--<div class="col-sm-3">-->
+                  <!--<div ng-init="o=['吹','拉','弹','唱']; a=o[1];">-->
+                    <!--<select ng-model="talentType" ng-options="x for x in o" ng-change="show()">-->
+                    <!--</select>-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+
+              <!--<div class="form-group">-->
+                <!--<label class="col-sm-2 control-label">支付方式</label>-->
+                <!--<div class="col-sm-3">-->
+                  <!--<div ng-init="oo=['支付宝','银行账号']; a=oo[1];">-->
+                    <!--<select ng-model="anchorType" ng-options="x for x in oo" ng-change="show()">-->
+                    <!--</select>-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+              <div class="form-group">
+                <label for="inputPay" class="col-sm-2 control-label">支付帐号</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputPay" ng-model="managerPay">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputIDno" class="col-sm-2 control-label">身份证号</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputIDno" ng-model="managerId">
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="inputNotes" class="col-sm-2 control-label">备注</label>
+
+                <div class="col-sm-10">
+                  <textarea class="form-control" id="inputNotes" placeholder="" ng-model="managerNotes"></textarea>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" ng-click="modify_submit()">保存</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

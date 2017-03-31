@@ -15,7 +15,7 @@ var mrmedia = {
 
 var paths = {
   scripts: [mrmedia.app + '/scripts/**/*.js'],
-  styles: [mrmedia.app + '/styles/**/*.css'],
+  styles: [mrmedia.app + '/css/**/*.css'],
   test: ['test/spec/**/*.js'],
   testRequire: [
     mrmedia.app + '/bower_components/angular/angular.js',
