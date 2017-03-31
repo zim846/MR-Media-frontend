@@ -40,14 +40,14 @@
               </thead>
               <tbody>
               <tr ng-repeat="item in managerrowCollection">
-                <td>{{item.name}}</td>
+                <td>{{item.agent.realName}}</td>
                 <td>{{item.status}}</td>
-                <td>{{item.tel}}</td>
-                <td>{{item.wechat}}</td>
-                <td>{{item.level}}</td>
-                <td>{{item.father}}</td>
-                <td>{{item.idno}}</td>
-                <td><span class="label label-primary" ng-click="showManagerModal()">审核</span> <span class="label label-danger">删除</span></td>
+                <td>{{item.agent.phoneNumber}}</td>
+                <td>{{item.agent.wechat}}</td>
+                <td>{{item.agent.agent.level}}</td>
+                <td>{{item.review.superUser.realName}}</td>
+                <td>{{item.agent.agent.idNumber}}</td>
+                <td><span class="label label-primary" ng-if="item.status === 0" ng-click="showManagerModal(item)">审核</span> <span class="label label-danger" ng-click="showDeleteModal(item.id)">删除</span></td>
               </tr>
 
 
@@ -78,7 +78,7 @@
               </tr>
               <tr>
                 <th>真实姓名</th>
-                <th>状态</th>
+                <th>审核状态</th>
                 <th>手机号</th>
                 <th>微信号</th>
                 <th>经纪人</th>
@@ -88,15 +88,15 @@
               </tr>
               </thead>
               <tbody>
-              <tr ng-repeat="item in anchorrowCollection" ng-click="gotoDetailPage(item.id)">
-                <td>{{item.name}}</td>
+              <tr ng-repeat="item in anchorrowCollection">
+                <td>{{item.actor.realName}}</td>
                 <td>{{item.status}}</td>
-                <td>{{item.tel}}</td>
-                <td>{{item.wechat}}</td>
-                <td>{{item.father}}</td>
-                <td>{{item.idno}}</td>
-                <td>{{item.adress}}</td>
-                <td><span class="label label-primary" ng-click="showAnchorModal()">审核</span> <span class="label label-danger">删除</span></td>
+                <td>{{item.actor.phoneNumber}}</td>
+                <td>{{item.actor.wechat}}</td>
+                <td>{{item.review.superUser.realName}}</td>
+                <td>{{item.actor.actor.idNumber}}</td>
+                <td>{{item.actor.location}}</td>
+                <td><span class="label label-primary" ng-click="showAnchorModal(item)">审核</span> <span class="label label-danger"  ng-click="showDeleteModal(item.id)">删除</span></td>
               </tr>
 
 
@@ -229,24 +229,24 @@
                 <b>微信号</b> <a class="pull-right">{{managerWechat}}</a>
               </li>
               <li class="list-group-item">
-                <b>上级经纪人</b> <a class="pull-right">{{managerWechat}}</a>
+                <b>上级经纪人</b> <a class="pull-right">{{managerFather}}</a>
               </li>
               <li class="list-group-item">
-                <b>身份证号</b> <a class="pull-right">{{managerWechat}}</a>
+                <b>身份证号</b> <a class="pull-right">{{managerId}}</a>
               </li>
               <li class="list-group-item">
-                <b>支付宝</b> <a class="pull-right">{{managerWechat}}</a>
+                <b>{{managerPayType}}</b> <a class="pull-right">{{managerPay}}</a>
               </li>
               <li class="list-group-item">
-                <img class="img-responsive" ng-src="{{managerIDImg}}">
+                <img ng-repeat="item in managerIDImgCollection" class="img-responsive" ng-src="{{item}}">
               </li>
             </ul>
 
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" ng-click="modify_submit()">通过</button>
-          <button type="button" class="btn btn-danger" ng-click="modify_submit()">拒绝</button>
+          <button type="button" class="btn btn-success" ng-click="verify_submit()">通过</button>
+          <button type="button" class="btn btn-danger" ng-click="verify_refuse()">拒绝</button>
         </div>
       </div>
     </div>
@@ -266,35 +266,42 @@
         </div>
         <div class="modal-body">
           <div class="box-body box-profile">
-            <img class="profile-user-img img-responsive img-circle" ng-src="{{managerIcon}}">
+            <img class="profile-user-img img-responsive img-circle" ng-src="{{anchorIcon}}">
 
-            <h3 class="profile-username text-center">{{managerName}}</h3>
+            <h3 class="profile-username text-center">{{anchorName}}</h3>
 
 
             <div class="col-sm-12"><ul class="list-group list-group-unbordered">
               <li class="list-group-item">
-                <b>手机号</b> <a class="pull-right">{{managerTel}}</a>
+                <b>手机号</b> <a class="pull-right">{{anchorTel}}</a>
               </li>
               <li class="list-group-item">
-                <b>微信号</b> <a class="pull-right">{{managerWechat}}</a>
+                <b>微信号</b> <a class="pull-right">{{anchorWechat}}</a>
               </li>
               <li class="list-group-item">
-                <b>经纪人</b> <a class="pull-right">{{managerWechat}}</a>
+                <b>经纪人</b> <a class="pull-right">{{anchorFather}}</a>
               </li>
               <li class="list-group-item">
-                <b>身份证号</b> <a class="pull-right">{{managerWechat}}</a>
+                <b>身份证号</b> <a class="pull-right">{{anchorrId}}</a>
               </li>
               <li class="list-group-item">
-                <b>支付宝</b> <a class="pull-right">{{managerWechat}}</a>
+                <b>{{anchorPayType}}</b> <a class="pull-right">{{anchorPay}}</a>
               </li>
               <li class="list-group-item">
-                <b>所在地</b> <a class="pull-right">{{managerWechat}}</a>
+                <b>所在地</b> <a class="pull-right">{{anchorLocation}}</a>
               </li>
               <li class="list-group-item">
-                <b>技能</b> <a class="pull-right">{{managerWechat}}</a>
+                <b>技能</b> <a class="pull-right">
+                <p ng-repeat="item in skillCollection track by $index">
+                <span ng-if="item === 0" class="label label-danger">唱歌</span>
+                <span ng-if="item === 1" class="label label-success">跳舞</span>
+                <span ng-if="item === 2" class="label label-info">段子手</span>
+                <span ng-if="item === 3" class="label label-warning">绘画</span>
+                <span ng-if="item === 4" class="label label-primary">游戏</span>
+              </p></a>
               </li>
               <li class="list-group-item">
-                <img class="img-responsive" ng-src="{{managerIDImg}}">
+                <img ng-repeat="item in anchorIDImgCollection" class="img-responsive" ng-src="{{item}}">
               </li>
 
             </ul></div>
@@ -304,20 +311,17 @@
             <div class="col-sm-6">
               <ul class="list-group list-group-unbordered">
               <li class="list-group-item">
-                <img class="img-responsive" ng-src="{{managerIDImg}}">
+                  <img class="img-responsive" ng-src="{{anchorIDImg1}}">
               </li>
               <li class="list-group-item">
-                <img class="img-responsive" ng-src="{{managerIDImg}}">
+                <img class="img-responsive" ng-src="{{anchorIDImg2}}">
               </li>
               </ul>
             </div>
             <div class="col-sm-6">
               <ul class="list-group list-group-unbordered">
                 <li class="list-group-item">
-                  <img class="img-responsive" ng-src="{{managerIDImg}}">
-                </li>
-                <li class="list-group-item">
-                  <img class="img-responsive" ng-src="{{managerIDImg}}">
+                  <img class="img-responsive" ng-src="{{anchorIDImg3}}">
                 </li>
               </ul>
             </div>
@@ -325,11 +329,32 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-success" ng-click="modify_submit()">通过</button>
-          <button type="button" class="btn btn-danger" ng-click="modify_submit()">拒绝</button>
+          <button type="button" class="btn btn-success" ng-click="verify_submit()">通过</button>
+          <button type="button" class="btn btn-danger" ng-click="verify_submit()">拒绝</button>
         </div>
       </div>
     </div>
 
+  </div>
+</div>
+
+
+<div class="modal fade" id="modifyDelete" tabindex="-1" role="dialog" aria-labelledby="modifyProductLabel">
+  <div class="modal-dialog" role="document">
+    <div class="box box-info">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+          <h4 class="modal-title">提示！</h4>
+        </div>
+        <div class="modal-body">
+          <p>是否确认删除？&hellip;</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal"><i class="fa fa-reply"></i>取消</button>
+          <button type="button" class="btn btn-danger" ng-click="comfirmDelete()"><i class="fa fa-trash"></i>确认删除</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
