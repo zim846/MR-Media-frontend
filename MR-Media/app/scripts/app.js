@@ -21,7 +21,7 @@ var mrmedia = angular.module('BackWebApp', [
 mrmedia.config(function($httpProvider) {
   $httpProvider.interceptors.push('myInterceptor');
 });
-mrmedia.value('baseURL', 'http://10.60.36.16:8080');
+mrmedia.value('baseURL', 'http://112.74.50.130');
 
 mrmedia.controller('MainCtrl', function ($state) {
   // $state.go('app.back.home');

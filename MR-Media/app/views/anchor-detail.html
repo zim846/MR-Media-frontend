@@ -37,7 +37,7 @@
 
                 <ul class="list-group list-group-unbordered">
                   <li class="list-group-item">
-                    <b>状态</b> <a class="pull-right"><i class="fa fa-circle text-success"></i> 在播中</a>
+                    <b>状态</b> <a class="pull-right" ng-show="anchorState" ng-hide="!anchorState"><i class="fa fa-circle text-success"></i> 在播中</a><a class="pull-right" ng-show="!anchorState" ng-hide="anchorState"><i class="fa fa-circle text-success" ></i> 未直播</a>
                   </li>
                   <li class="list-group-item">
                     <b>手机号</b> <a class="pull-right">{{anchorTel}}</a>
@@ -286,7 +286,7 @@
                 <div class="col-sm-10">
                   <div class="checkbox">
                     <label>
-                      <input type="checkbox" ng-model="!!anchorState">
+                      <input type="checkbox" ng-model="anchorState">
                       在播中
                     </label>
                   </div>

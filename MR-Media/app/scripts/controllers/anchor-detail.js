@@ -25,7 +25,7 @@ mrmedia.controller('AnchorDetailCtrl',
           $scope.anchorType = settleType[response.employee.settleType];
           $scope.talentType = talents[response.employee.talentType];
           $scope.anchorCollection = response.platforms;
-          $scope.anchorState = 1 - response.employee.active;
+          $scope.anchorState = Boolean(1 - response.employee.active);
         }else{
           NoticeSrv.error("失败");
         }
@@ -121,7 +121,7 @@ mrmedia.controller('AnchorDetailCtrl',
       $scope.modify_submit = function(){
         var actor = {
           // 'active' : $scope.anchorState,
-          'active' :1 - $scope.anchorState,
+          'active' :1 - Number($scope.anchorState),
           'idNumber' : $scope.anchorId,
           'level':$scope.anchorLevel,
           'location': $scope.anchorLocation,
