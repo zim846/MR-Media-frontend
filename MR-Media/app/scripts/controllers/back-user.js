@@ -59,6 +59,12 @@ mrmedia.controller('BackuserCtrl',
 
       getData();
 
+      $scope.regex = '\\d+';
+
+      $scope.test = function (s1s) {
+        console.log(s1s);
+      };
+
 
       $scope.modalName = '';
 
