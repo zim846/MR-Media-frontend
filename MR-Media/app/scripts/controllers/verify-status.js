@@ -1,29 +1,33 @@
 'use strict';
 
 mrmedia.controller('VerifyStatusCtrl',
-  ['$scope','AManagerSrv','NoticeSrv', '$uibModal','$state','UtilSrv',
-    function($scope,AManagerSrv,NoticeSrv, $uibModal, $state, UtilSrv) {
+  ['$scope','VerifySrv','NoticeSrv', '$uibModal','$state','UtilSrv',
+    function($scope,VerifySrv,NoticeSrv, $uibModal, $state, UtilSrv) {
 
+      $scope.typeTable = ['主播','经纪人'];
+      $scope.statusTable = ['未审核','已审核','已拒绝'];
 
-      $scope.managerName = "张嘉琦";
-      $scope.managerLevel = "5";
-      $scope.managerIcon = "../images/icon.jpg";
-      $scope.managerTel = "13666666666";
-      $scope.managerId = "123456789012345678";
-      $scope.managerFather = "秦博";
-      $scope.managerNotes = "一个辣鸡硕士";
-      $scope.managerWechat = 'qinbosv';
-      $scope.managerPay = 'qinbosv';
-      $scope.managerCollection = AManagerSrv.managerList;
-      $scope.anchorCollection = AManagerSrv.managerList;
-      $scope.managerIDImg = "../images/idimg.jpg";
-
+     var verifyData =[{
+        id:0,//id
+        type: 0,//0 主播 1 经纪人
+        status : 0,//
+        name:"string",//姓名
+        phone: "string",//手机号
+        wechat: "string",//微信号
+        father:"string",//上级经纪人
+        idCard: "string"//身份证号
+      }];
 
       $('#myTab a').click(function (e) {
         e.preventDefault();
         $(this).tab('show');
       });
 
+      var getData =function () {
+        $scope.verifyCollection = verifyData;
+      };
+
+      getData();
 
 
     }]);
