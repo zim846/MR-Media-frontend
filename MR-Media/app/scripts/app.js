@@ -25,6 +25,7 @@ mrmedia.value('baseURL', 'http://112.74.50.130');
 
 mrmedia.controller('MainCtrl', function ($state) {
   // $state.go('app.back.home');
+
 });
 
 
