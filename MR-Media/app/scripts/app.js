@@ -104,4 +104,9 @@ mrmedia.config(function ($stateProvider, $urlRouterProvider) {
       controller: 'ModifyPWDCtrl'
     })
 
+    .state('login', {
+      url:'/login',
+      templateUrl : 'views/login.html',
+      controller: 'LoginCtrl'
+    })
 });

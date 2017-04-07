@@ -1,6 +1,6 @@
 'use strict';
-mrmedia.controller('LoginCtrl', ['$scope', 'BackuserSrv', 'NoticeSrv', 'TokenSrv', '$state',
-function($scope, BackuserSrv, NoticeSrv, TokenSrv, $state) {
+mrmedia.controller('LoginCtrl', ['$scope', 'NoticeSrv', 'TokenSrv', '$state',
+function($scope, NoticeSrv, TokenSrv, $state) {
   $scope.admin = {
     // TODO: 写完之后改回来
     // "username": '',
@@ -46,5 +46,13 @@ function($scope, BackuserSrv, NoticeSrv, TokenSrv, $state) {
         NoticeSrv.error("发生未知错误！");
       });
   };
+
+  $('input').iCheck({
+    checkboxClass: 'icheckbox_square-blue',
+    radioClass: 'iradio_square-blue',
+    increaseArea: '20%' // optional
+  });
+
+  $("body").css("height","auto")
 
 }]);
