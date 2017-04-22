@@ -1,7 +1,7 @@
 'use strict';
 
-mrmedia.controller('SidebarCtrl', ['$scope', 'SidebarSrv', 'NoticeSrv',
- function($scope, SidebarSrv, NoticeSrv) {
+mrmedia.controller('SidebarCtrl', ['$scope', 'SidebarSrv', 'NoticeSrv','$state',
+ function($scope, SidebarSrv, NoticeSrv,$state) {
 
   $scope.userIcon = "../images/icon.jpg";
 
@@ -59,14 +59,37 @@ mrmedia.controller('SidebarCtrl', ['$scope', 'SidebarSrv', 'NoticeSrv',
      }
    ];
 
-   $scope.menu_active = function(index){
-     $scope.adminMenu.forEach(function(elem,i){
+
+   $scope.currState = $state;
+   console.log("This one have some objects: ");
+   console.log('by reference:', $scope.currState);
+
+   // console.log("But when I want to access name its empty: ");
+   // $timeout(function() {
+   //    console.log($state.current.name);
+   // });
+
+   // use this instead:
+   $scope.$watch('currState.current.name', function(newValue, oldValue) {
+     $scope.adminMenu.forEach(function(elem){
        elem.active = "";
-       if(index===i){
+       if(elem.url===newValue){
+         $scope.managerActive = '';
+         $scope.adminActive = 'active';
          elem.active = "active";
        }
-     })
-   };
+     });
+     $scope.managerMenu.forEach(function(elem){
+       elem.active = "";
+       if(elem.url===newValue){
+         $scope.adminActive = '';
+         $scope.managerActive = 'active';
+         elem.active = "active";
+       }
+     });
+     console.log(newValue);
+   });
+
   // $scope.isCollapsed = true;
   // $scope.sidebarList = SidebarSrv.getSidebar();
   // $scope.sidebar = [];
