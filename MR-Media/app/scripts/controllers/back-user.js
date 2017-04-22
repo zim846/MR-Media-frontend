@@ -9,16 +9,20 @@ mrmedia.controller('BackuserCtrl',
       var admin = {
         id:0,
         name:"string",//姓名
-        phone: "string",//手机号
-        auth:[0,1] // 0 经纪人列表 1 主播列表 2 审核 3 结算
+        phoneNumber: "string",//手机号
+        authorities:[0,1] // 0 经纪人列表 1 主播列表 2 审核 3 结算
       };
 
       $scope.admin = {
-        id: '',
-        name:"",//姓名
-        phone: "",//手机号
-        auth:[] // 0 经纪人列表 1 主播列表 2 审核 3 结算
+        id : '',
+        name : "",//姓名
+        userName : "",
+        password:'',
+        phoneNumber: "",//手机号
+        authorities:[] // 0 经纪人列表 1 主播列表 2 审核 3 结算
       };
+
+      $scope.deleteId = {id : ''};
 
       //选择
 
@@ -44,15 +48,15 @@ mrmedia.controller('BackuserCtrl',
        *@param:
        */
       var getData = function (anchorDeleteId) {
-        // BackUserSrv.getList().get()
-        //   .$promise.then(function (response) {
-        //   if (response.errCode === 0) {
-        //     console.log(response);
-        //     $scope.backuserCollection = response.admins;
-        //   }},function (response) {
-        //   NoticeSrv.error("获取所有管理员错误,http状态码:"+response.status);
-        // });
-        $scope.backuserCollection = admin;
+        BackUserSrv.getList().get()
+          .$promise.then(function (response) {
+          console.log(response);
+          if (response.errCode === 0) {
+
+            $scope.backuserCollection = response.admin;
+          }},function (response) {
+          NoticeSrv.error("获取所有管理员错误,http状态码:"+response.status);
+        });
 
 
       };
@@ -77,33 +81,58 @@ mrmedia.controller('BackuserCtrl',
         $scope.admin = {
           id: '',
           name:"",//姓名
-          phone: "",//手机号
-          auth:[] // 0 经纪人列表 1 主播列表 2 审核 3 结算
+          userName:"",
+          password:'',
+          phoneNumber: "",//手机号
+          authorities:[] // 0 经纪人列表 1 主播列表 2 审核 3 结算
         };
+        console.log(item);
         $scope.selected = [];
         $scope.modalName = '修改管理员';
         $scope.admin = Object.assign({},item);
+        $scope.admin.phoneNumber = item.phone;
+        $scope.admin.userName = item.username;
         $scope.selected = item.auth.concat();
         console.log($scope.selected);
         $('#editUser').modal('show');
       };
 
       /**
+       *@description: 删除管理员
+       *@param:
+       */
+
+      $scope.deleteModalShow = function (item) {
+        $scope.deleteId.id = item.id;
+        $('#modifyDelete').modal('show');
+      };
+
+
+      $scope.comfirmDelete = function () {
+        BackUserSrv.deleteUser().add($scope.deleteId)
+          .$promise.then(function (response) {
+          if (response.errCode === 0) {
+            NoticeSrv.success("删除管理员成功");
+            getData();
+            $('#modifyDelete').modal('hide');
+          }},function (response) {
+          NoticeSrv.error("删除管理员错误,http状态码:"+response.status);
+        });
+      };
+
+      /**
        *@description: 新建管理员
        *@param:
        */
-      var newData = {
-        authorities: [],
-        phoneNumber: "",
-        uid: ""
-      };
 
       $scope.newUserModalShow = function (item) {
         $scope.admin = {
-          id: '',
+          id: -1,
           name:"",//姓名
-          phone: "",//手机号
-          auth:[] // 0 经纪人列表 1 主播列表 2 审核 3 结算
+          userName:"",
+          password:'',
+          phoneNumber: "",//手机号
+          authorities:[] // 0 经纪人列表 1 主播列表 2 审核 3 结算
         };
         $scope.selected = [];
         $scope.modalName = '新建管理员';
@@ -111,12 +140,14 @@ mrmedia.controller('BackuserCtrl',
       };
 
       $scope.user_submit = function(){
-        BackUserSrv.newUser().add(newData)
+        $scope.admin.authorities = $scope.selected;
+        console.log($scope.admin);
+        BackUserSrv.newUser().add($scope.admin)
           .$promise.then(function (response) {
-          if (response.errorCode === 0) {
+          if (response.errCode === 0) {
             NoticeSrv.success("创建管理员成功");
             getData();
-            $('#modifyDelete').modal('hide');
+            $('#editUser').modal('hide');
           }},function (response) {
           NoticeSrv.error("创建管理员错误,http状态码:"+response.status);
         });

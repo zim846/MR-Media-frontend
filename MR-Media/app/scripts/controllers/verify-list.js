@@ -2,45 +2,11 @@
 
 mrmedia.controller('VerifyListCtrl',
   ['$scope','VerifySrv','NoticeSrv', '$uibModal','$state','UtilSrv',
-    function($scope,VerifySrv,NoticeSrv, $uibModal, $state, UtilSrv) {
+    function($scope,VerifySrv,NoticeSrv) {
 
       $scope.payTypeTable = ['支付宝','银行'];
       $scope.statusTable = ['未审核','已审核','已拒绝'];
 
-      var VerifyData = {
-        actor: [{
-          id: 0, //id
-          name: "string", //真实姓名
-          status: 0,//审核状态 0 未审核 1 已通过 2 已拒绝
-          avatar: "http://112.74.50.130/back/images/icon.jpg", //头像url
-          phone: "string",//手机号
-          wechat: "string",//微信号
-          father: "string",//经纪人
-          idCard: "string",//身份证号
-          location: "string",//所在地
-          payType : 0,//0 支付宝 1 银行
-          payAccount: "string",//支付帐号
-          skills: [0,1,2,3,4],//技能 0 唱歌 1 跳舞 2 段子手 3 绘画 4 游戏
-          idPics: ['http://112.74.50.130/back/images/idimg.jpg','http://112.74.50.130/back/images/idimg.jpg'],//身份证照片url
-          photo: ['http://112.74.50.130/back/images/idimg.jpg','http://112.74.50.130/back/images/idimg.jpg','http://112.74.50.130/back/images/idimg.jpg']//照片url
-        }],
-        manager:[{
-          id:0,
-          name:"string",//姓名
-          avatar: "http://112.74.50.130/back/images/icon.jpg", //头像url
-          level: "string",//经纪人等级
-          status: 0,//审核状态 0 未审核 1 已通过 2 已拒绝
-          phone: "string",//手机号
-          wechat: "string",//微信号
-          father:"string",//上级经纪人
-          idCard: "string",//身份证
-          payType : 0,//支付方式
-          payAccount: "string",//支付帐号
-          idPics: ['http://112.74.50.130/back/images/idimg.jpg','http://112.74.50.130/back/images/idimg.jpg']//身份证照片url
-        }]
-
-
-      };
 
       /**
        *@description: 标签页切换
@@ -141,17 +107,16 @@ mrmedia.controller('VerifyListCtrl',
        *@param:
        */
 
-      var getData = function (anchorDeleteId) {
-        // VerifySrv.getList().get()
-        //   .$promise.then(function (response) {
-        //   if (response.errCode === 0) {
-        //     console.log(response);
-        //     $scope.managerrowCollection = response.agentReviewEntities;
-        //   }},function (response) {
-        //   NoticeSrv.error("获取所有审核错误,http状态码:"+response.status);
-        // });
-        $scope.managerCollection = VerifyData.manager;
-        $scope.anchorCollection = VerifyData.actor;
+      var getData = function () {
+        VerifySrv.getList().get()
+          .$promise.then(function (response) {
+          if (response.errCode === 0) {
+            console.log(response);
+            $scope.managerrowCollection = response.VerifyData.manager;
+            $scope.anchorCollection = response.VerifyData.actor;
+          }},function (response) {
+          NoticeSrv.error("获取所有审核错误,http状态码:"+response.status);
+        });
 
       };
 

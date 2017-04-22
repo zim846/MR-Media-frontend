@@ -2,7 +2,7 @@
 mrmedia.factory('TokenSrv', function () {
         return {
 
-          token: 'a6c90bdd01d18502d72cd529447c4cb7',
+          token: '2ef85369f09f1dae7cc906e32f620f64',
           setToken: function (token) {
               this.token = token;
           },

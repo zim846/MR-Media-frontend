@@ -119,17 +119,17 @@
       <!-- sidebar menu: : style can be found in sidebar.less -->
       <ul class="sidebar-menu">
         <li class="header">MAIN NAVIGATION</li>
-        <li class="treeview">
-          <a>
+        <li class="treeview {{adminActive}}">
+          <a style="cursor:pointer;">
             <i class="fa fa-user-secret"></i>
-            <span>管理员模块</span>
+            <span >管理员模块</span>
             <!--<span class="pull-right-container">-->
             <!--<span class="label label-primary pull-right">4</span>-->
             </span>
           </a>
           <ul class="treeview-menu">
-            <li  ng-repeat="item in adminMenu track by $index">
-              <a ng-click="menu_active($index)" ui-sref="{{item.url}}">
+            <li class="{{item.active}}"  ng-repeat="item in adminMenu track by $index">
+              <a ui-sref="{{item.url}}">
                 <i class={{item.icon}}></i> <span>{{item.name}}</span>
                 <!--<span class="pull-right-container">-->
                 <!--<small class="label pull-right bg-red">3</small>-->
@@ -139,8 +139,8 @@
             </li>
           </ul>
         </li>
-        <li class="treeview">
-          <a>
+        <li class="treeview {{managerActive}}">
+          <a style="cursor:pointer;">
             <i class="fa fa-user"></i>
             <span>经纪人模块</span>
             <!--<span class="pull-right-container">-->
@@ -148,8 +148,8 @@
             </span>
           </a>
           <ul class="treeview-menu">
-            <li  ng-repeat="item in managerMenu track by $index">
-              <a ng-click="menu_active($index)" ui-sref="{{item.url}}">
+            <li class="{{item.active}}"  ng-repeat="item in managerMenu track by $index">
+              <a ui-sref="{{item.url}}">
                 <i class={{item.icon}}></i> <span>{{item.name}}</span>
                 <!--<span class="pull-right-container">-->
                 <!--<small class="label pull-right bg-red">3</small>-->

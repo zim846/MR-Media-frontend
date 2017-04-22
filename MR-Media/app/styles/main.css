@@ -980,3 +980,9 @@ fieldset[disabled] .datepicker table tr td span.active.disabled:hover.active {
 .required-warn{
   color: red;font-size: small
 }
+
+
+/*鼠标移到table的lable上*/
+.label{
+  cursor:pointer;
+}

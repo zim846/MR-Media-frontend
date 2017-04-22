@@ -15,7 +15,12 @@ mrmedia.service('BackUserSrv', ['$resource','$http', 'baseURL' ,function ($resou
 
   //新建管理员
   this.newUser = function() {
-    return $resource(baseURL + '/admin/create', null, {'add': {method: 'POST'}});
+    return $resource(baseURL + '/admin/saveOrUpdate', null, {'add': {method: 'POST'}});
+  };
+
+  //删除管理员
+  this.deleteUser = function() {
+    return $resource(baseURL + '/admin/delete', null, {'add': {method: 'POST'}});
   };
 
 }]);
