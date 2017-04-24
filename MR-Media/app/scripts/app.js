@@ -109,4 +109,10 @@ mrmedia.config(function ($stateProvider, $urlRouterProvider) {
       templateUrl : 'views/login.html',
       controller: 'LoginCtrl'
     })
+
+    .state('app.test', {
+      url:'test',
+      templateUrl : 'views/test.html',
+      controller: 'TestCtrl'
+    })
 });
