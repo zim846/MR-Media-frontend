@@ -59,6 +59,13 @@ mrmedia.controller('TestCtrl',
       };
 
 
+      $scope.rotate_left =function () {
+        $('#avatarImg').cropper("rotate",-90);
+      };
+
+      $scope.rotate_right =function () {
+        $('#avatarImg').cropper("rotate",90);
+      };
 
 
 
